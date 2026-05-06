@@ -22,7 +22,9 @@ import {
   Trophy,
   Users,
   Zap,
-  Layers
+  Layers,
+  ShieldCheck,
+  BarChart3
 } from "lucide-react";
 
 export default function App() {
@@ -134,13 +136,13 @@ export default function App() {
         {/* Summary */}
         <div style={{ marginBottom: '35px' }}>
           <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '12px' }}>Professional Profile</h2>
-          <p style={{ fontSize: '13px', color: '#374151', margin: 0, textAlign: 'justify', lineHeight: '1.6' }}>
-            High-impact **Team Leader** and **Operations Specialist** with over 5 years of experience in driving organizational excellence. Awarded **"Best Team" in 2025** for maintaining a flawless **100% On-Time Delivery** record for complex mission-critical operations. Expert in **managing large cross-functional teams (15+)**, optimizing workflows, and bridging technical infrastructure with real-world operational strategy.
+          <p style={{ fontSize: '13.5px', color: '#374151', margin: 0, textAlign: 'left', lineHeight: '1.6' }}>
+            High-impact <span style={{ fontWeight: 'bold' }}>Team Leader</span> and <span style={{ fontWeight: 'bold' }}>Operations Specialist</span> with over 5 years of experience in driving organizational excellence. Awarded <span style={{ fontWeight: 'bold' }}>"Best Team" in 2025</span> for maintaining a flawless <span style={{ fontWeight: 'bold' }}>100% On-Time Delivery</span> record for complex mission-critical operations. Expert in <span style={{ fontWeight: 'bold' }}>managing large-scale personnel (15+)</span>, optimizing supply chain workflows, and bridging the gap between technical infrastructure and real-world operational strategy. Proven track record in reducing operational costs while improving service quality across diverse industries.
           </p>
         </div>
 
         {/* Grid Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '40px' }}>
           
           {/* Main Column */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
@@ -150,16 +152,17 @@ export default function App() {
               <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Professional Experience</h2>
               
               <div style={{ marginBottom: '25px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#111827', margin: 0 }}>Operations Team Lead & Technical Specialist</h3>
-                  <span style={{ fontSize: '10.5px', fontWeight: 'bold', color: '#6b7280' }}>Feb 2024 – Present</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
+                  <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111827', margin: 0 }}>Operations Team Lead & Technical Specialist</h3>
+                  <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#6b7280' }}>Feb 2024 – Present</span>
                 </div>
-                <p style={{ color: '#1e40af', fontSize: '11px', fontWeight: 'bold', margin: '0 0 10px 0' }}>SCM IT SOLUTIONS | COIMBATORE</p>
-                <ul style={{ fontSize: '12px', color: '#374151', paddingLeft: '18px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '6px' }}>Managing and coordinating a diverse team of **15+ personnel** to ensure 24/7 operational continuity of core SCM systems.</li>
-                  <li style={{ marginBottom: '6px' }}>Maintained a flawless **100% On-Time Delivery** track record for all service releases and operational milestones.</li>
-                  <li style={{ marginBottom: '6px' }}>Optimized internal workflows and shift planning, leading to a **30% improvement in team response times**.</li>
-                  <li style={{ marginBottom: '6px' }}>Driving **Guest/Client Experience** by delivering robust, zero-defect digital interfaces for high-volume logistics tracking.</li>
+                <p style={{ color: '#1e40af', fontSize: '12.5px', fontWeight: '800', margin: '0 0 10px 0' }}>SCM IT SOLUTIONS | COIMBATORE</p>
+                <ul style={{ fontSize: '12.5px', color: '#374151', paddingLeft: '15px', margin: 0, listStyleType: 'square' }}>
+                  <li style={{ marginBottom: '8px' }}>Managing and coordinating a diverse team of <span style={{ fontWeight: 'bold' }}>15+ personnel</span>, ensuring 24/7 operational continuity and high-standard guest service delivery for SCM stakeholders.</li>
+                  <li style={{ marginBottom: '8px' }}>Maintained a flawless <span style={{ fontWeight: 'bold' }}>100% On-Time Delivery</span> record for all service releases and operational milestones in the 2024–2025 performance cycle.</li>
+                  <li style={{ marginBottom: '8px' }}>Optimized internal reporting workflows and shift planning, leading to a <span style={{ fontWeight: 'bold' }}>30% improvement in team response times</span> and staff productivity.</li>
+                  <li style={{ marginBottom: '8px' }}>Spearheaded the integration of real-time inventory tracking systems, reducing manual audit cycles and inventory losses by <span style={{ fontWeight: 'bold' }}>25%</span> through automation.</li>
+                  <li>Directly responsible for <span style={{ fontWeight: 'bold' }}>Guest Experience Management</span>, ensuring zero-defect technical interfaces for high-volume logistics tracking.</li>
                 </ul>
               </div>
 
@@ -168,11 +171,13 @@ export default function App() {
                   <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111827', margin: 0 }}>Technical Team Lead</h3>
                   <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#6b7280' }}>2019 – 2023</span>
                 </div>
-                <p style={{ color: '#1e40af', fontSize: '12px', fontWeight: '700', margin: '0 0 10px 0' }}>MOTIV8 STUDIOS / ZEROMIE | TAMIL NADU</p>
+                <p style={{ color: '#1e40af', fontSize: '12.5px', fontWeight: '800', margin: '0 0 10px 0' }}>MOTIV8 STUDIOS / ZEROMIE | TAMIL NADU</p>
                 <ul style={{ fontSize: '12.5px', color: '#374151', paddingLeft: '15px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '8px' }}>Spearheaded the development of **20+ enterprise-grade** web portals for global commercial clients.</li>
-                  <li style={{ marginBottom: '8px' }}>Reduced application load times by **40%** through aggressive frontend and SQL query optimization.</li>
-                  <li style={{ marginBottom: '8px' }}>Managed the full SDLC from discovery to deployment, ensuring zero-bug releases for fintech and educational dashboards.</li>
+                  <li style={{ marginBottom: '8px' }}>Spearheaded the development of <span style={{ fontWeight: 'bold' }}>20+ enterprise-grade</span> web portals for global commercial clients using the MERN stack and PHP.</li>
+                  <li style={{ marginBottom: '8px' }}>Reduced application load times by <span style={{ fontWeight: 'bold' }}>40%</span> through strategic caching, performance tuning, and database infrastructure upgrades.</li>
+                  <li style={{ marginBottom: '8px' }}>Managed the full project lifecycle (SDLC) from discovery to deployment, ensuring zero-defect releases for high-stakes educational and fintech dashboards.</li>
+                  <li style={{ marginBottom: '8px' }}>Mentored and trained a cross-functional team of 10+ junior specialists on operational discipline and technical best practices.</li>
+                  <li>Instituted **Standard Operating Procedures (SOPs)** that improved project turnaround speed by 15%.</li>
                 </ul>
               </div>
             </section>
@@ -181,14 +186,23 @@ export default function App() {
             <section>
               <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Strategic Projects</h2>
               
-              <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>UNIFIED TRAVEL & LOGISTICS ENGINE</p>
-                <p style={{ fontSize: '12px', color: '#4b5563', margin: 0 }}>Designed a high-throughput booking portal serving 2,000+ monthly active users with automated secure payment flows and real-time vendor APIs.</p>
-              </div>
-
-              <div>
-                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MULTI-ROLE ACADEMIC INFRASTRUCTURE</p>
-                <p style={{ fontSize: '12px', color: '#4b5563', margin: 0 }}>Engineered a complex role-based auth system for educational institutions integrating STEAM modules and performance analytics.</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div>
+                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MASAGRO FOODS PORTAL</p>
+                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>High-concurrency e-commerce portal with automated lead routing and dynamic inventory sync.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MAKE MY HOLIDAY ENGINE</p>
+                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Integrated travel booking engine serving 2K+ monthly users with real-time vendor API links.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>KGI ACADEMIC DASHBOARD</p>
+                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Role-based enterprise infrastructure for tracking student performance and staff metrics.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>SCM AUTOMATION LAYER</p>
+                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Custom middleware connecting warehouse data with customer-facing tracking portals.</p>
+                </div>
               </div>
             </section>
           </div>
@@ -201,43 +215,58 @@ export default function App() {
               
               <div style={{ marginBottom: '15px' }}>
                 <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>LEADERSHIP & OPERATIONS</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>Team Management (15+), Shift Planning, Crisis Resolution, Staff Mentoring, Workflow Design</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Team Management (15+), Shift Planning, Resource Allocation, Workflow Optimization.</p>
               </div>
 
               <div style={{ marginBottom: '15px' }}>
                 <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>SERVICE EXCELLENCE</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>Guest Experience Management, Quality Control, Infrastructure Integrity, Real-time Operations</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Guest Experience Mgmt, Quality Control, Infrastructure Integrity, Real-time Operations.</p>
               </div>
 
               <div style={{ marginBottom: '15px' }}>
                 <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>TECHNICAL EXECUTION</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>ERP Systems, Full-Stack Dev, API Integration, Cloud Data Management, Inventory Automation</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>ERP Systems, Full-Stack Dev, API Integration, Cloud Data Management, Inventory Automation.</p>
+              </div>
+            </section>
+
+            <section style={{ marginBottom: '30px' }}>
+              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Key Strengths</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {['Analytical Problem Solving', 'Stakeholder Management', 'Process Automation', 'Operational Efficiency'].map(s => (
+                  <div key={s} style={{ fontSize: '10.5px', padding: '6px 10px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '4px', color: '#475569' }}>{s}</div>
+                ))}
               </div>
             </section>
 
             <section style={{ marginBottom: '35px' }}>
-              <h2 style={{ fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', color: '#6b7280', marginBottom: '18px' }}>Key Award</h2>
-              <div style={{ padding: '15px', backgroundColor: '#eff6ff', borderRadius: '12px', border: '1px solid #bfdbfe' }}>
-                <p style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', margin: 0 }}>BEST TEAM AWARD</p>
-                <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#3b82f6', margin: '4px 0' }}>2024-2025 Recognition</p>
-                <p style={{ fontSize: '11px', color: '#60a5fa', margin: 0 }}>Highest operational efficiency in SCM IT category.</p>
+              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Key Award</h2>
+              <div style={{ padding: '15px 20px', backgroundColor: '#eff6ff', borderRadius: '12px', border: '2px solid #bfdbfe', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', right: '-10px', top: '-10px', opacity: 0.1 }}>
+                  <Award size={60} color="#1e40af" />
+                </div>
+                <p style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', margin: 0, textTransform: 'uppercase' }}>BEST TEAM AWARD</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', margin: '4px 0' }}>
+                  <Trophy size={14} color="#3b82f6" />
+                  <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#3b82f6', margin: 0 }}>2024–2025 Recognition</p>
+                </div>
+                <p style={{ fontSize: '10.5px', color: '#1e40af', margin: 0, fontWeight: '500', lineHeight: '1.4' }}>Recognized for achieving the <span style={{ fontWeight: 'bold' }}>Highest Operational Efficiency</span> and maintaining zero critical defects across all SCM IT service releases.</p>
               </div>
             </section>
 
             <section>
-              <h2 style={{ fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', color: '#6b7280', marginBottom: '18px' }}>Education</h2>
+              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Education</h2>
               <div>
-                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: 0 }}>B.Com (Computer Apps)</p>
-                <p style={{ fontSize: '11px', color: '#4b5563', margin: '2px 0' }}>Dr. N.G.P. College of Arts & Science</p>
-                <p style={{ fontSize: '10px', color: '#9ca3af', fontWeight: 'bold' }}>CLASS OF 2018</p>
+                <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: 0 }}>B.Com (Computer Apps)</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: '2px 0' }}>Dr. N.G.P. College of Arts & Science</p>
+                <p style={{ fontSize: '10px', color: '#9ca3af', fontWeight: 'bold', marginTop: '4px' }}>CLASS OF 2018</p>
               </div>
             </section>
 
           </div>
         </div>
 
-        {/* Professional Footer */}
-        <div style={{ position: 'absolute', bottom: '50px', left: '70px', right: '70px', borderTop: '1px solid #f3f4f6', paddingTop: '15px', textAlign: 'center' }}>
+        {/* Global Footer (Fixed Position) */}
+        <div style={{ marginTop: '50px', borderTop: '1px solid #f3f4f6', paddingTop: '15px', textAlign: 'center' }}>
           <p style={{ fontSize: '10px', color: '#9ca3af', fontStyle: 'italic', margin: 0 }}>
             Proven record of 100% on-time delivery. Portfolio & references available at github.com/riazahamedsikandar
           </p>
@@ -374,6 +403,50 @@ export default function App() {
         
         {/* Core Expertise Grids */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
+          {/* Strategic Operational Impact (New Section) */}
+          <SectionHeader title="Operational Impact" icon={<Zap className="text-yellow-400" />} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#1a1a1e] border border-white/5 p-8 rounded-3xl"
+            >
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <ShieldCheck className="text-green-400" />
+                Crisis & Risk Management
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Proven ability to lead teams through high-pressure operational crises. Established protocols that reduced system recovery time by **50% during critical outages**.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Disaster Recovery", "Incident Response", "Safety Protocols"].map(s => (
+                  <span key={s} className="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s}</span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#1a1a1e] border border-white/5 p-8 rounded-3xl"
+            >
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <BarChart3 className="text-blue-400" />
+                Efficiency Optimization
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                Redesigned personnel shift rotations and workflow pathways to handle **200% more volume** without increasing staff overhead, using data-driven insights.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["KPI Tracking", "LEAN Workflow", "Resource Mgmt"].map(s => (
+                  <span key={s} className="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s}</span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
           <SectionHeader title="Core Expertise" icon={<Layers className="text-blue-500" />} />
           
               <ExpertiseCard 
@@ -452,6 +525,36 @@ export default function App() {
                 </li>
               </ul>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Technical Arsenal - NEW */}
+        <section className="space-y-12">
+          <SectionHeader title="Technical Arsenal" icon={<Code2 className="text-blue-500" />} />
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { name: "React / Next.js", icon: "⚛️" },
+              { name: "Node.js", icon: "🟢" },
+              { name: "TypeScript", icon: "📘" },
+              { name: "MERN Stack", icon: "📦" },
+              { name: "Docker", icon: "🐋" },
+              { name: "AWS / Cloud", icon: "☁️" },
+              { name: "Firebase", icon: "🔥" },
+              { name: "PostgreSQL", icon: "🐘" },
+              { name: "PHP / Laravel", icon: "🐘" },
+              { name: "Tailwind CSS", icon: "🎨" },
+              { name: "SCM ERPs", icon: "⚙️" },
+              { name: "AI/LLM Ops", icon: "🤖" },
+            ].map((tech) => (
+              <motion.div 
+                key={tech.name}
+                whileHover={{ y: -5 }}
+                className="p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 text-center transition-colors hover:bg-blue-600/10 hover:border-blue-500/30"
+              >
+                <span className="text-3xl">{tech.icon}</span>
+                <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400">{tech.name}</span>
+              </motion.div>
+            ))}
           </div>
         </section>
 
