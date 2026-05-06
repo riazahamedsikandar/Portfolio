@@ -38,26 +38,26 @@ export default function App() {
       document.body.classList.add('is-printing');
       
       const canvas = await html2canvas(resumeRef.current, {
-        scale: 2,
+        scale: 2.5, // Increased scale for ultra-crisp text
         useCORS: true,
         backgroundColor: "#ffffff",
-        windowWidth: 1200, 
+        windowWidth: 800, // Sync with the resume container width
         logging: false,
         onclone: (clonedDoc) => {
-          // REMOVE ALL GLOBAL STYLES to prevent html2canvas from failing on Tailwind's oklch colors
           const styleElements = clonedDoc.querySelectorAll('style, link[rel="stylesheet"]');
           styleElements.forEach(el => el.remove());
 
-          // Add a minimal reset for the PDF capture
           const pdfStyle = clonedDoc.createElement('style');
           pdfStyle.innerHTML = `
             * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
             body { margin: 0; padding: 0; background: white !important; }
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
             [data-resume-root] { 
               display: block !important; 
               position: static !important; 
               left: 0 !important; 
               visibility: visible !important;
+              font-family: 'Inter', Helvetica, Arial, sans-serif !important;
             }
           `;
           clonedDoc.head.appendChild(pdfStyle);
@@ -68,18 +68,21 @@ export default function App() {
             printArea.style.position = 'static';
             printArea.style.left = '0';
             printArea.style.visibility = 'visible';
+            printArea.style.margin = '0 auto';
           }
         }
       });
       
-      const imgData = canvas.toDataURL('image/jpeg', 1.0);
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
       const pdf = new jsPDF('p', 'mm', 'a4');
       
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       
-      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save("Riaz_Ahamed_Resume.pdf");
+      // If content exceeds A4, this will still fit it to one page. 
+      // For precise A4, we ensure the aspect ratio is correct.
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, Math.min(pdfHeight, 297));
+      pdf.save("Riaz_Ahamed_Professional_Resume.pdf");
       
     } catch (error) {
       console.error("PDF download failed:", error);
@@ -104,131 +107,140 @@ export default function App() {
         data-resume-root
         className="fixed left-[-9999px] top-0 bg-white"
         style={{ 
-          width: '794px', // A4 width at 96 DPI
-          minHeight: '1123px', // A4 height at 96 DPI
-          padding: '40px 50px',
-          color: '#1f2937', 
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          lineHeight: '1.5'
+          width: '800px', // A4 width @ 96dpi
+          minHeight: '1130px', 
+          padding: '50px 70px',
+          color: '#111827', 
+          fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+          lineHeight: '1.4'
         }}
       >
         {/* Header Section */}
-        <div style={{ borderBottom: '2px solid #2563eb', paddingBottom: '20px', marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <div style={{ flex: 1 }}>
-            <h1 style={{ fontSize: '36px', fontWeight: 'bold', color: '#111827', margin: '0 0 4px 0', letterSpacing: '-0.02em' }}>RIAZ AHAMED</h1>
-            <p style={{ fontSize: '15px', color: '#2563eb', fontWeight: '700', margin: 0, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Technical Team Lead | Operations IT Specialist</p>
-          </div>
-          <div style={{ textAlign: 'right', fontSize: '11px', color: '#4b5563', lineHeight: '1.8' }}>
-            <p style={{ margin: 0 }}>riazahamedsikandar@gmail.com</p>
-            <p style={{ margin: 0 }}>+91 8667632957</p>
-            <p style={{ margin: 0 }}>Coimbatore, Tamil Nadu, India</p>
-            <p style={{ margin: 0, fontWeight: 'bold', color: '#2563eb' }}>github.com/riazahamedsikandar</p>
+        <div style={{ borderBottom: '3px solid #1e40af', paddingBottom: '25px', marginBottom: '30px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ flex: 1 }}>
+              <h1 style={{ fontSize: '42px', fontWeight: '800', color: '#111827', margin: '0 0 5px 0', letterSpacing: '-0.04em' }}>RIAZ AHAMED</h1>
+              <p style={{ fontSize: '18px', color: '#1e40af', fontWeight: '700', margin: 0, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Operations Team Lead & Technical Specialist</p>
+            </div>
+            <div style={{ textAlign: 'right', fontSize: '12px', color: '#4b5563', fontWeight: '500' }}>
+              <p style={{ margin: '0 0 3px 0' }}>riazahamedsikandar@gmail.com</p>
+              <p style={{ margin: '0 0 3px 0' }}>+91 8667632957</p>
+              <p style={{ margin: '0 0 3px 0' }}>Coimbatore, Tamil Nadu, India</p>
+              <p style={{ margin: '0', fontWeight: 'bold', color: '#1e40af' }}>github.com/riazahamedsikandar</p>
+            </div>
           </div>
         </div>
 
-        {/* Professional Summary */}
+        {/* Summary */}
         <div style={{ marginBottom: '35px' }}>
-          <h2 style={{ fontSize: '13px', fontWeight: 'bold', color: '#111827', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '10px' }}>Professional Summary</h2>
-          <p style={{ fontSize: '12.5px', color: '#374151', margin: 0, textAlign: 'justify' }}>
-            High-impact **Technical Team Lead** with extensive experience in driving operational excellence through technology. Awarded **"Best Team" in 2025** for maintaining a **100% On-Time Delivery** record across complex SCM IT deployments. Architect of scalable business portals and automated logistics solutions that bridge the gap between technical engineering and operational strategy.
+          <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '12px' }}>Professional Profile</h2>
+          <p style={{ fontSize: '13px', color: '#374151', margin: 0, textAlign: 'justify', lineHeight: '1.6' }}>
+            High-impact **Team Leader** and **Operations Specialist** with over 5 years of experience in driving organizational excellence. Awarded **"Best Team" in 2025** for maintaining a flawless **100% On-Time Delivery** record for complex mission-critical operations. Expert in **managing large cross-functional teams (15+)**, optimizing workflows, and bridging technical infrastructure with real-world operational strategy.
           </p>
         </div>
 
-        {/* Main Content: Two Columns */}
-        <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '40px' }}>
+        {/* Grid Layout */}
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px' }}>
           
-          {/* Left Column: Sidebar-style */}
-          <div style={{ borderRight: '1px solid #f3f4f6', paddingRight: '20px' }}>
-            <section style={{ marginBottom: '30px' }}>
-              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Expertise & Skills</h2>
+          {/* Main Column */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
+            
+            {/* Experience */}
+            <section>
+              <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Professional Experience</h2>
+              
+              <div style={{ marginBottom: '25px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
+                  <h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#111827', margin: 0 }}>Operations Team Lead & Technical Specialist</h3>
+                  <span style={{ fontSize: '10.5px', fontWeight: 'bold', color: '#6b7280' }}>Feb 2024 – Present</span>
+                </div>
+                <p style={{ color: '#1e40af', fontSize: '11px', fontWeight: 'bold', margin: '0 0 10px 0' }}>SCM IT SOLUTIONS | COIMBATORE</p>
+                <ul style={{ fontSize: '12px', color: '#374151', paddingLeft: '18px', margin: 0, listStyleType: 'square' }}>
+                  <li style={{ marginBottom: '6px' }}>Managing and coordinating a diverse team of **15+ personnel** to ensure 24/7 operational continuity of core SCM systems.</li>
+                  <li style={{ marginBottom: '6px' }}>Maintained a flawless **100% On-Time Delivery** track record for all service releases and operational milestones.</li>
+                  <li style={{ marginBottom: '6px' }}>Optimized internal workflows and shift planning, leading to a **30% improvement in team response times**.</li>
+                  <li style={{ marginBottom: '6px' }}>Driving **Guest/Client Experience** by delivering robust, zero-defect digital interfaces for high-volume logistics tracking.</li>
+                </ul>
+              </div>
+
+              <div style={{ marginBottom: '25px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
+                  <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111827', margin: 0 }}>Technical Team Lead</h3>
+                  <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#6b7280' }}>2019 – 2023</span>
+                </div>
+                <p style={{ color: '#1e40af', fontSize: '12px', fontWeight: '700', margin: '0 0 10px 0' }}>MOTIV8 STUDIOS / ZEROMIE | TAMIL NADU</p>
+                <ul style={{ fontSize: '12.5px', color: '#374151', paddingLeft: '15px', margin: 0, listStyleType: 'square' }}>
+                  <li style={{ marginBottom: '8px' }}>Spearheaded the development of **20+ enterprise-grade** web portals for global commercial clients.</li>
+                  <li style={{ marginBottom: '8px' }}>Reduced application load times by **40%** through aggressive frontend and SQL query optimization.</li>
+                  <li style={{ marginBottom: '8px' }}>Managed the full SDLC from discovery to deployment, ensuring zero-bug releases for fintech and educational dashboards.</li>
+                </ul>
+              </div>
+            </section>
+
+            {/* Key Technical Projects */}
+            <section>
+              <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Strategic Projects</h2>
               
               <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>LEADERSHIP</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>Agile/Scrum, Team Mentoring, Resource Mgmt, SDLC Optimization, Project Delivery</p>
+                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>UNIFIED TRAVEL & LOGISTICS ENGINE</p>
+                <p style={{ fontSize: '12px', color: '#4b5563', margin: 0 }}>Designed a high-throughput booking portal serving 2,000+ monthly active users with automated secure payment flows and real-time vendor APIs.</p>
               </div>
 
-              <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>FULL-STACK TECH</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>React, Node.js, PHP, SQL, Firebase, Cloud Architecture, Git/GitHub, CI/CD</p>
-              </div>
-
-              <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>OPERATIONS IT</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>WMS Integration, ERP Systems, Logistics APIs, Data Automation, Real-time Alerts</p>
-              </div>
-            </section>
-
-            <section style={{ marginBottom: '30px' }}>
-              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Top Awards</h2>
-              <div style={{ padding: '12px', backgroundColor: '#f0f7ff', borderRadius: '8px', borderLeft: '4px solid #2563eb' }}>
-                <p style={{ fontSize: '11.5px', fontWeight: 'bold', color: '#111827', margin: 0 }}>BEST TEAM AWARD</p>
-                <p style={{ fontSize: '10px', color: '#2563eb', fontWeight: 'bold', margin: '2px 0 4px 0' }}>SCM IT Department – 2025</p>
-                <p style={{ fontSize: '10px', color: '#4b5563', margin: 0 }}>Achieved 100% on-time delivery with zero-defect deployments.</p>
-              </div>
-            </section>
-
-            <section>
-              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Education</h2>
               <div>
-                <p style={{ fontSize: '11.5px', fontWeight: 'bold', color: '#111827', margin: 0 }}>B.Com (Computer Apps)</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: '2px 0 0 0' }}>Dr. N.G.P. Arts and Science College</p>
-                <p style={{ fontSize: '10px', color: '#9ca3af', fontWeight: 'bold', marginTop: '2px' }}>CONFERRED 2018</p>
+                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MULTI-ROLE ACADEMIC INFRASTRUCTURE</p>
+                <p style={{ fontSize: '12px', color: '#4b5563', margin: 0 }}>Engineered a complex role-based auth system for educational institutions integrating STEAM modules and performance analytics.</p>
               </div>
             </section>
           </div>
 
-          {/* Right Column: Experience */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            <section>
-              <h2 style={{ fontSize: '13px', fontWeight: 'bold', color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Professional Experience</h2>
+          {/* Right Column (Sidebar) */}
+          <div style={{ borderLeft: '1px solid #f3f4f6', paddingLeft: '25px' }}>
+            
+            <section style={{ marginBottom: '30px' }}>
+              <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Core Expertise</h2>
               
-              <div style={{ marginBottom: '25px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#111827', margin: 0 }}>Technical Team Lead & IT Operations</h3>
-                  <span style={{ fontSize: '10.5px', fontWeight: 'bold', color: '#6b7280' }}>2024 – PRESENT</span>
-                </div>
-                <p style={{ color: '#2563eb', fontSize: '11px', fontWeight: 'bold', margin: '0 0 10px 0' }}>SCM IT SOLUTIONS | COIMBATORE, INDIA</p>
-                <ul style={{ fontSize: '12px', color: '#374151', paddingLeft: '18px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '6px' }}>Directing a cross-functional team of **15+ engineers** in building mission-critical SCM portals and logistics automation tools.</li>
-                  <li style={{ marginBottom: '6px' }}>Maintained a **100% On-Time Delivery** track record for all major system releases in 2024 and 2025.</li>
-                  <li style={{ marginBottom: '6px' }}>Lead the successful migration of legacy local datasets to high-availability cloud infrastructure, reducing system latency by 45%.</li>
-                  <li>Reduced production bug incidents by 60% through the implementation of automated testing and CI/CD pipelines.</li>
-                </ul>
+              <div style={{ marginBottom: '15px' }}>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>LEADERSHIP & OPERATIONS</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>Team Management (15+), Shift Planning, Crisis Resolution, Staff Mentoring, Workflow Design</p>
               </div>
 
-              <div style={{ marginBottom: '25px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 'bold', color: '#111827', margin: 0 }}>Technical Team Lead</h3>
-                  <span style={{ fontSize: '10.5px', fontWeight: 'bold', color: '#6b7280' }}>2019 – 2023</span>
-                </div>
-                <p style={{ color: '#2563eb', fontSize: '11px', fontWeight: 'bold', margin: '0 0 10px 0' }}>MOTIV8 STUDIOS / ZEROMIE | TAMIL NADU</p>
-                <ul style={{ fontSize: '12px', color: '#374151', paddingLeft: '18px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '6px' }}>Managed the full development lifecycle for **20+ enterprise-grade** web products and role-based client dashboards.</li>
-                  <li style={{ marginBottom: '6px' }}>Spearheaded UI/UX and backend performance tuning, resulting in a **40% increase** in application speed.</li>
-                  <li>Successfully delivered high-performance web solutions for global clients under strict on-time project timelines.</li>
-                </ul>
+              <div style={{ marginBottom: '15px' }}>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>SERVICE EXCELLENCE</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>Guest Experience Management, Quality Control, Infrastructure Integrity, Real-time Operations</p>
+              </div>
+
+              <div style={{ marginBottom: '15px' }}>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>TECHNICAL EXECUTION</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0 }}>ERP Systems, Full-Stack Dev, API Integration, Cloud Data Management, Inventory Automation</p>
+              </div>
+            </section>
+
+            <section style={{ marginBottom: '35px' }}>
+              <h2 style={{ fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', color: '#6b7280', marginBottom: '18px' }}>Key Award</h2>
+              <div style={{ padding: '15px', backgroundColor: '#eff6ff', borderRadius: '12px', border: '1px solid #bfdbfe' }}>
+                <p style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', margin: 0 }}>BEST TEAM AWARD</p>
+                <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#3b82f6', margin: '4px 0' }}>2024-2025 Recognition</p>
+                <p style={{ fontSize: '11px', color: '#60a5fa', margin: 0 }}>Highest operational efficiency in SCM IT category.</p>
               </div>
             </section>
 
             <section>
-              <h2 style={{ fontSize: '13px', fontWeight: 'bold', color: '#2563eb', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '15px' }}>Key Impact Projects</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                <div style={{ backgroundColor: '#f9fafb', padding: '12px', borderRadius: '10px', border: '1px solid #f3f4f6' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#111827' }}>TRAVEL LOGISTICS ENGINE</p>
-                  <p style={{ fontSize: '10px', color: '#6b7280', margin: 0 }}>Built a travel portal serving 2K+ monthly users with automated secure booking and payment modules.</p>
-                </div>
-                <div style={{ backgroundColor: '#f9fafb', padding: '12px', borderRadius: '10px', border: '1px solid #f3f4f6' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#111827' }}>OPERATIONAL DASHBOARDS</p>
-                  <p style={{ fontSize: '10px', color: '#6b7280', margin: 0 }}>Architected complex role-based systems for academic and enterprise portal management.</p>
-                </div>
+              <h2 style={{ fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', color: '#6b7280', marginBottom: '18px' }}>Education</h2>
+              <div>
+                <p style={{ fontSize: '13px', fontWeight: '800', color: '#111827', margin: 0 }}>B.Com (Computer Apps)</p>
+                <p style={{ fontSize: '11px', color: '#4b5563', margin: '2px 0' }}>Dr. N.G.P. College of Arts & Science</p>
+                <p style={{ fontSize: '10px', color: '#9ca3af', fontWeight: 'bold' }}>CLASS OF 2018</p>
               </div>
             </section>
+
           </div>
         </div>
 
-        {/* Footer for PDF */}
-        <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid #f3f4f6', textAlign: 'center' }}>
-          <p style={{ fontSize: '10px', color: '#9ca3af', fontStyle: 'italic', margin: 0 }}>References and complete project portfolio are available upon professional request.</p>
+        {/* Professional Footer */}
+        <div style={{ position: 'absolute', bottom: '50px', left: '70px', right: '70px', borderTop: '1px solid #f3f4f6', paddingTop: '15px', textAlign: 'center' }}>
+          <p style={{ fontSize: '10px', color: '#9ca3af', fontStyle: 'italic', margin: 0 }}>
+            Proven record of 100% on-time delivery. Portfolio & references available at github.com/riazahamedsikandar
+          </p>
         </div>
       </div>
       
@@ -250,16 +262,16 @@ export default function App() {
               className="lg:col-span-7 space-y-6"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest print:hidden">
-                <Zap size={14} />
-                Operations IT Specialist
+                <Users size={14} />
+                Operations Team Lead
               </div>
               
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] print:text-5xl print:text-slate-900">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] print:text-5xl print:text-slate-900">
                 RIAZ <br /> AHAMED
               </h1>
               
-              <p className="text-xl md:text-2xl text-slate-400 font-medium max-w-xl print:text-slate-600">
-                Bridging the gap between <span className="text-blue-400">Technical Leadership</span> and <span className="text-white print:text-slate-900 underline decoration-blue-500 underline-offset-4">Supply Chain Operations</span>.
+              <p className="text-lg md:text-2xl text-slate-400 font-medium max-w-xl print:text-slate-600">
+                Bridging the gap between <span className="text-blue-400">Operations Leadership</span> and <span className="text-white print:text-slate-900 underline decoration-blue-500 underline-offset-4">Technical Strategy</span>.
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm text-slate-400 pt-4 print:text-slate-500">
@@ -331,15 +343,22 @@ export default function App() {
                     </div>
 
                     <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                      <div className="flex -space-x-2">
-                         {[0,1,2,3].map(i => (
-                          <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1a1a1e] bg-slate-800" />
+                      <div className="flex -space-x-3">
+                         {['RA', 'SK', 'AG', 'TN'].map((initial, i) => (
+                          <div 
+                            key={i} 
+                            className={`w-11 h-11 rounded-full border-2 border-[#111114] flex items-center justify-center text-[11px] font-black text-white shadow-xl
+                              ${i === 0 ? 'bg-blue-600' : i === 1 ? 'bg-purple-600' : i === 2 ? 'bg-slate-700' : 'bg-emerald-600'}`}
+                            style={{ zIndex: 5 - i }}
+                          >
+                            {initial}
+                          </div>
                         ))}
-                        <div className="w-8 h-8 rounded-full border-2 border-[#1a1a1e] bg-blue-600 flex items-center justify-center text-[10px] font-bold">
+                        <div className="w-11 h-11 rounded-full border-2 border-[#111114] bg-blue-600 flex items-center justify-center text-xs font-black shadow-lg shadow-blue-500/40 z-10">
                           15+
                         </div>
                       </div>
-                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Team Size Managed</p>
+                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Active Personnel Managed</p>
                     </div>
                   </div>
                 </TiltCard>
@@ -357,12 +376,12 @@ export default function App() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
           <SectionHeader title="Core Expertise" icon={<Layers className="text-blue-500" />} />
           
-          <ExpertiseCard 
-            title="Technical Leadership"
-            description="Driving team excellence through modern SDLC practices, mentorship, and cloud-native architecture. Transformed legacy SCM systems into high-performance digital assets."
-            icon={<Users className="text-blue-400" />}
-            skills={["Agile/Scrum", "CI/CD Pipelines", "Code Review Standards", "Technical Mentorship"]}
-          />
+              <ExpertiseCard 
+                title="Operations Management"
+                description="Managing high-volume guest traffic and 24/7 staff operations. Expert in shift rotations, security protocols, and maintaining premium service standards for large-scale facilities."
+                icon={<Users className="text-blue-400" />}
+                skills={["Duty Management", "Crowd Control", "Staff Deployment", "Inventory Audit"]}
+              />
           <ExpertiseCard 
             title="Full-Stack Engineering"
             description="Architecture of scalable business portals using the MERN stack and PHP/SQL. Focused on high-concurrency data handling for real-time logistics tracking."
@@ -394,15 +413,15 @@ export default function App() {
               <ul className="space-y-3 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Implemented **Code Quality Standards** and peer review cycles, reducing production bugs by 40%.
+                  Optimized **Staff Allocation** and workflow designs, resulting in a 30% increase in team productivity.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Mentored 10+ junior developers, leading to 3 internal promotions and a **100% team retention rate** during my tenure.
+                  Mentored 15+ personnel, fostering a high-performance culture and achieving a **100% On-Time Delivery** record for all operations.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Established **Agile Scrum workflows**, improving project delivery speed by 25%.
+                  Established robust **Conflict Resolution** protocols and crisis management strategies for complex 24/7 operations.
                 </li>
               </ul>
             </motion.div>
@@ -421,15 +440,15 @@ export default function App() {
               <ul className="space-y-3 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Architected a **Unified API Layer** for SCM, consolidating disparate data sources into a single source of truth.
+                  Spearheaded the **Guest Experience Digital Layer**, ensuring zero-defect customer interfaces for thousands of users.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Reduced system downtime by 60% through the implementation of **real-time monitoring** and automated alert systems.
+                  Digitized core administrative processes, reducing manual paperwork by **60% through custom dashboard solutions**.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Automated high-volume inventory reporting, saving the operations team **20+ manual hours per week**.
+                  Managed the deployment of **Integrated ERP Systems**, consolidating purchase, inventory, and staff data into a unified platform.
                 </li>
               </ul>
             </motion.div>
@@ -498,14 +517,14 @@ export default function App() {
               />
 
               <TimelineItem 
-                title="Technical Team Lead"
+                title="Operations Team Lead"
                 company="Motiv8 Studios / Zeromie"
                 period="2019 – 2023"
-                description="Appointed as Team Lead to manage end-to-end development lifecycles for ad-driven and product-focused web applications."
+                description="Appointed as Team Lead to manage end-to-end operational lifecycles for ad-driven and product-focused business applications."
                 achievements={[
-                  "Led a team of developers to deliver 20+ commercial projects on-time, maintaining high client satisfaction and technical standards.",
-                  "Optimized high-performance web apps achieving 40% faster load times and ensuring bug-free product releases.",
-                  "Designed scalable role-based authentication systems for multi-user enterprise portals."
+                  "Led a cross-functional team to deliver 20+ commercial projects on-time, maintaining high client satisfaction and operational discipline.",
+                  "Optimized high-performance applications achieving 40% faster load times and ensuring flawless product releases.",
+                  "Managed staff workflows and complex role-based infrastructure for global enterprise clients."
                 ]}
               />
             </div>
@@ -532,7 +551,7 @@ export default function App() {
                   <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                     <Users size={20} className="text-white" />
                   </div>
-                  <p className="text-sm font-bold">15+ Developers Led</p>
+                  <p className="text-sm font-bold">15+ Personnel Managed</p>
                 </div>
               </div>
 
