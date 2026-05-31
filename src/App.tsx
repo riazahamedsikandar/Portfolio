@@ -24,12 +24,18 @@ import {
   Zap,
   Layers,
   ShieldCheck,
-  BarChart3
+  BarChart3,
+  Cpu,
+  Database,
+  Server,
+  Smartphone,
+  Laptop
 } from "lucide-react";
 
 export default function App() {
   const resumeRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [selectedSkillCategory, setSelectedSkillCategory] = useState("All");
 
   const handleDownloadPDF = async () => {
     if (!resumeRef.current) return;
@@ -118,91 +124,124 @@ export default function App() {
         }}
       >
         {/* Header Section */}
-        <div style={{ borderBottom: '3px solid #1e40af', paddingBottom: '25px', marginBottom: '30px' }}>
+        <div style={{ borderBottom: '3px solid #1e40af', paddingBottom: '20px', marginBottom: '25px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div style={{ flex: 1 }}>
-              <h1 style={{ fontSize: '42px', fontWeight: '800', color: '#111827', margin: '0 0 5px 0', letterSpacing: '-0.04em' }}>RIAZ AHAMED</h1>
-              <p style={{ fontSize: '18px', color: '#1e40af', fontWeight: '700', margin: 0, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Operations Team Lead & Technical Specialist</p>
+              <h1 style={{ fontSize: '38px', fontWeight: '800', color: '#111827', margin: '0 0 5px 0', letterSpacing: '-0.04em' }}>RIAZ AHAMED</h1>
+              <p style={{ fontSize: '16px', color: '#1e40af', fontWeight: '700', margin: 0, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Senior AI Mobile & Full-Stack Developer</p>
             </div>
-            <div style={{ textAlign: 'right', fontSize: '12px', color: '#4b5563', fontWeight: '500' }}>
-              <p style={{ margin: '0 0 3px 0' }}>riazahamedsikandar@gmail.com</p>
-              <p style={{ margin: '0 0 3px 0' }}>+91 8667632957</p>
+            <div style={{ textAlign: 'right', fontSize: '11px', color: '#4b5563', fontWeight: '500' }}>
+              <p style={{ margin: '0 0 3px 0' }}>riazahamedsikandar@gmail.com | +91 8667632957</p>
               <p style={{ margin: '0 0 3px 0' }}>Coimbatore, Tamil Nadu, India</p>
-              <p style={{ margin: '0', fontWeight: 'bold', color: '#1e40af' }}>github.com/riazahamedsikandar</p>
+              <p style={{ margin: '0 0 3px 0', fontWeight: 'bold', color: '#1e40af' }}>github.com/riazahamedsikandar</p>
+              <p style={{ margin: '0', fontWeight: 'bold', color: '#10b981' }}>kitecampus.com | Live Mobile & Web Apps</p>
             </div>
           </div>
         </div>
 
         {/* Summary */}
-        <div style={{ marginBottom: '35px' }}>
-          <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '12px' }}>Professional Profile</h2>
-          <p style={{ fontSize: '13.5px', color: '#374151', margin: 0, textAlign: 'left', lineHeight: '1.6' }}>
-            High-impact <span style={{ fontWeight: 'bold' }}>Team Leader</span> and <span style={{ fontWeight: 'bold' }}>Operations Specialist</span> with over 5 years of experience in driving organizational excellence. Awarded <span style={{ fontWeight: 'bold' }}>"Best Team" in 2025</span> for maintaining a flawless <span style={{ fontWeight: 'bold' }}>100% On-Time Delivery</span> record for complex mission-critical operations. Expert in <span style={{ fontWeight: 'bold' }}>managing large-scale personnel (15+)</span>, optimizing supply chain workflows, and bridging the gap between technical infrastructure and real-world operational strategy. Proven track record in reducing operational costs while improving service quality across diverse industries.
+        <div style={{ marginBottom: '22px' }}>
+          <h2 style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '4px', marginBottom: '8px' }}>Professional Profile</h2>
+          <p style={{ fontSize: '12px', color: '#374151', margin: 0, textAlign: 'left', lineHeight: '1.45' }}>
+            Result-driven <span style={{ fontWeight: 'bold' }}>Senior AI Mobile & Full-Stack Developer</span> with 5+ years of expertise. Creator and sole architect of <span style={{ fontWeight: 'bold' }}>KiteCampus School Ecosystem</span>, launching dual companion apps on Google Play Store with active web dashboards. Experienced in integrating <span style={{ fontWeight: 'bold' }}>AI APIs (OpenAI & Gemini)</span>, optimizing relational tables in <span style={{ fontWeight: 'bold' }}>MS SQL Server</span>, and compiling secure enterprise architectures with Zero API credentials leak.
           </p>
         </div>
 
         {/* Grid Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.67fr 1fr', gap: '30px' }}>
           
           {/* Main Column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
             
-            {/* Experience */}
-            <section>
-              <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Professional Experience</h2>
-              
-              <div style={{ marginBottom: '25px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111827', margin: 0 }}>Operations Team Lead & Technical Specialist</h3>
-                  <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#6b7280' }}>Feb 2024 – Present</span>
-                </div>
-                <p style={{ color: '#1e40af', fontSize: '12.5px', fontWeight: '800', margin: '0 0 10px 0' }}>SCM IT SOLUTIONS | COIMBATORE</p>
-                <ul style={{ fontSize: '12.5px', color: '#374151', paddingLeft: '15px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '8px' }}>Managing and coordinating a diverse team of <span style={{ fontWeight: 'bold' }}>15+ personnel</span>, ensuring 24/7 operational continuity and high-standard guest service delivery for SCM stakeholders.</li>
-                  <li style={{ marginBottom: '8px' }}>Maintained a flawless <span style={{ fontWeight: 'bold' }}>100% On-Time Delivery</span> record for all service releases and operational milestones in the 2024–2025 performance cycle.</li>
-                  <li style={{ marginBottom: '8px' }}>Optimized internal reporting workflows and shift planning, leading to a <span style={{ fontWeight: 'bold' }}>30% improvement in team response times</span> and staff productivity.</li>
-                  <li style={{ marginBottom: '8px' }}>Spearheaded the integration of real-time inventory tracking systems, reducing manual audit cycles and inventory losses by <span style={{ fontWeight: 'bold' }}>25%</span> through automation.</li>
-                  <li>Directly responsible for <span style={{ fontWeight: 'bold' }}>Guest Experience Management</span>, ensuring zero-defect technical interfaces for high-volume logistics tracking.</li>
-                </ul>
-              </div>
+        {/* Experience */}
+        <section>
+          <h2 style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '4px', marginBottom: '12px' }}>Professional Experience</h2>
+          
+          <div style={{ marginBottom: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2px' }}>
+              <h3 style={{ fontSize: '12.5px', fontWeight: '850', color: '#111827', margin: 0 }}>Senior AI Mobile & Full-Stack Developer</h3>
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#6b7280' }}>2023 – Present</span>
+            </div>
+            <p style={{ color: '#1e40af', fontSize: '10.5px', fontWeight: '800', margin: '0 0 3px 0' }}>MOTIV8 STUDIOS | COIMBATORE, TN</p>
+            <ul style={{ fontSize: '10px', color: '#374151', paddingLeft: '14px', margin: 0, listStyleType: 'square' }}>
+              <li style={{ marginBottom: '2px' }}>Launched and compiled 20+ robust enterprise e-stores, custom companion apps, and dynamic tracking dashboards.</li>
+              <li style={{ marginBottom: '2px' }}>Secured enterprise intellectual assets by encapsulating LLM calls (OpenAI & Gemini APIs) via strict server-side proxy routes.</li>
+              <li style={{ marginBottom: '2px' }}>Optimized real-time notification push models in cross-platform mobile containers, securing 99.9% push delivery rates.</li>
+              <li>Engineered custom server-side routing & token validation layers, eliminating browser-facing API credentials leakage.</li>
+            </ul>
+          </div>
 
-              <div style={{ marginBottom: '25px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#111827', margin: 0 }}>Technical Team Lead</h3>
-                  <span style={{ fontSize: '11px', fontWeight: 'bold', color: '#6b7280' }}>2019 – 2023</span>
-                </div>
-                <p style={{ color: '#1e40af', fontSize: '12.5px', fontWeight: '800', margin: '0 0 10px 0' }}>MOTIV8 STUDIOS / ZEROMIE | TAMIL NADU</p>
-                <ul style={{ fontSize: '12.5px', color: '#374151', paddingLeft: '15px', margin: 0, listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '8px' }}>Spearheaded the development of <span style={{ fontWeight: 'bold' }}>20+ enterprise-grade</span> web portals for global commercial clients using the MERN stack and PHP.</li>
-                  <li style={{ marginBottom: '8px' }}>Reduced application load times by <span style={{ fontWeight: 'bold' }}>40%</span> through strategic caching, performance tuning, and database infrastructure upgrades.</li>
-                  <li style={{ marginBottom: '8px' }}>Managed the full project lifecycle (SDLC) from discovery to deployment, ensuring zero-defect releases for high-stakes educational and fintech dashboards.</li>
-                  <li style={{ marginBottom: '8px' }}>Mentored and trained a cross-functional team of 10+ junior specialists on operational discipline and technical best practices.</li>
-                  <li>Instituted **Standard Operating Procedures (SOPs)** that improved project turnaround speed by 15%.</li>
-                </ul>
-              </div>
-            </section>
+          <div style={{ marginBottom: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2px' }}>
+              <h3 style={{ fontSize: '12.5px', fontWeight: '850', color: '#111827', margin: 0 }}>Full-Stack Developer (Freelance / Contract)</h3>
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#6b7280' }}>2024 – Present</span>
+            </div>
+            <p style={{ color: '#1e40af', fontSize: '10.5px', fontWeight: '800', margin: '0 0 3px 0' }}>GLOBAL VENTURES | COIMBATORE, TN (BUSINESS SOLUTIONS)</p>
+            <ul style={{ fontSize: '10px', color: '#374151', paddingLeft: '14px', margin: 0, listStyleType: 'square' }}>
+              <li style={{ marginBottom: '2px' }}>Designed & launched 15+ rich bespoke web systems, content widgets, and secure e-shops with PHP, React, and Tailwind.</li>
+              <li style={{ marginBottom: '2px' }}>Integrated multi-currency online gateways (Stripe & Razorpay) and managed OAuth session lifetimes under sub-2s latency.</li>
+              <li style={{ marginBottom: '2px' }}>Formulated relational databases on MS SQL, building optimized queries and customized views for advanced corporate analytics.</li>
+              <li>Collaborated with global business clients to compile lightweight back-office panels, accelerating monthly checkout actions by 35%.</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2px' }}>
+              <h3 style={{ fontSize: '12.5px', fontWeight: '850', color: '#111827', margin: 0 }}>Full-Stack Developer & Mobile Architect</h3>
+              <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#6b7280' }}>2019 – 2023</span>
+            </div>
+            <p style={{ color: '#1e40af', fontSize: '10.5px', fontWeight: '800', margin: '0 0 3px 0' }}>ZEROMI INFOTECH | COIMBATORE, TN</p>
+            <ul style={{ fontSize: '10px', color: '#374151', paddingLeft: '14px', margin: 0, listStyleType: 'square' }}>
+              <li style={{ marginBottom: '2px' }}>Programmed premium cross-platform apps using Flutter/React Native with absolute offline SQLite and Hive data caching.</li>
+              <li style={{ marginBottom: '2px' }}>Overhauled relational database schemas and stored procedures on physical SQL Server setups, lowering latencies by 40%.</li>
+              <li style={{ marginBottom: '2px' }}>Wrote modular token-based REST APIs (JWT handshakes) accompanied by strict payload and security decoders.</li>
+              <li>Built customized real-time micro-services to map academic indices and student registration sheets on legacy systems.</li>
+            </ul>
+          </div>
+        </section>
 
             {/* Key Technical Projects */}
-            <section>
-              <h2 style={{ fontSize: '14px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '6px', marginBottom: '20px' }}>Strategic Projects</h2>
+            <section style={{ marginBottom: '10px' }}>
+              <h2 style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '4px', marginBottom: '10px' }}>Proprietary Products & Showcase Portfolios</h2>
               
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+              <div style={{ marginBottom: '8px' }}>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', margin: '0 0 2px 0' }}>KITECAMPUS SCHOOL SYSTEM (My Proprietary Project)</p>
+                <p style={{ fontSize: '9.5px', color: '#374151', margin: '0 0 3px 0', lineHeight: '1.25' }}>
+                  Complete multi-tenant ecosystem. Twin live companion applications published on Google Play matching custom desktop administrative consoles.
+                </p>
+                <p style={{ fontSize: '8.5px', color: '#1e40af', margin: '0 0 4px 0', fontWeight: 'bold' }}>
+                  Web: kitecampus.com | Parents App: play.google.com/store/apps/details?id=com.kitecampus.school | Staff App: play.google.com/store/apps/details?id=com.kitecampus.staff
+                </p>
+                <ul style={{ fontSize: '9px', color: '#4b5563', paddingLeft: '14px', margin: '0', listStyleType: 'square' }}>
+                  <li style={{ marginBottom: '1px' }}><strong>Mobile Apps (Flutter):</strong> Drives class schedules, diary notifications, and push fee receipts for 10K+ installs.</li>
+                  <li style={{ marginBottom: '1px' }}><strong>Admin Dashboard (Parcel):</strong> Ultra-lightweight bundler securing immediate sub-2s client load times.</li>
+                </ul>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 10px' }}>
                 <div>
-                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MASAGRO FOODS PORTAL</p>
-                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>High-concurrency e-commerce portal with automated lead routing and dynamic inventory sync.</p>
+                  <p style={{ fontSize: '9.5px', fontWeight: '800', color: '#111827', margin: '0 0 1px 0' }}>MASAGRO FOODS PORTAL</p>
+                  <p style={{ fontSize: '8.5px', color: '#4b5563', margin: 0, lineHeight: '1.2' }}>B2B distributor platform tracking live inventory lists with automatic routing.</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>MAKE MY HOLIDAY ENGINE</p>
-                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Integrated travel booking engine serving 2K+ monthly users with real-time vendor API links.</p>
+                  <p style={{ fontSize: '9.5px', fontWeight: '800', color: '#111827', margin: '0 0 1px 0' }}>MAKE MY HOLIDAY TOURS</p>
+                  <p style={{ fontSize: '8.5px', color: '#4b5563', margin: 0, lineHeight: '1.2' }}>Booking engine serving 2,000+ monthly clients with SMS flight alerts.</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>KGI ACADEMIC DASHBOARD</p>
-                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Role-based enterprise infrastructure for tracking student performance and staff metrics.</p>
+                  <p style={{ fontSize: '9.5px', fontWeight: '800', color: '#111827', margin: '0 0 1px 0' }}>KGI SCHOOL PORTAL</p>
+                  <p style={{ fontSize: '8.5px', color: '#4b5563', margin: 0, lineHeight: '1.2' }}>Role-based PHP portals handling academic grades and teacher-pupil journals.</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: '12px', fontWeight: '800', color: '#111827', margin: '0 0 4px 0' }}>SCM AUTOMATION LAYER</p>
-                  <p style={{ fontSize: '11px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Custom middleware connecting warehouse data with customer-facing tracking portals.</p>
+                  <p style={{ fontSize: '9.5px', fontWeight: '800', color: '#111827', margin: '0 0 1px 0' }}>EXPERIENCE REBOOT</p>
+                  <p style={{ fontSize: '8.5px', color: '#4b5563', margin: 0, lineHeight: '1.2' }}>Optimized SQL configurations raising table query speeds by 55% with sub-2s response.</p>
                 </div>
+              </div>
+              
+              {/* Company IP Protected Banner */}
+              <div style={{ marginTop: '13px', padding: '8px 12px', backgroundColor: '#fafafa', borderRadius: '6px', borderLeft: '3px solid #64748b' }}>
+                <p style={{ fontSize: '9.5px', color: '#64748b', margin: 0, fontStyle: 'italic', lineHeight: '1.3' }}>
+                  <strong>Enterprise IP Clause:</strong> Due to strict corporate Intellectual Property agreements with enterprise clients, several advanced AI-powered production systems (such as localized smart classification workflows) are kept confidential.
+                </p>
               </div>
             </section>
           </div>
@@ -214,25 +253,25 @@ export default function App() {
               <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Core Expertise</h2>
               
               <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>LEADERSHIP & OPERATIONS</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Team Management (15+), Shift Planning, Resource Allocation, Workflow Optimization.</p>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>AI & MOBILE DEVELOPMENT</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Kotlin, Swift, React Native, Flutter, OpenAI & Gemini API Integration, Model Orchestration, SDK Linking.</p>
               </div>
 
               <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>SERVICE EXCELLENCE</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Guest Experience Mgmt, Quality Control, Infrastructure Integrity, Real-time Operations.</p>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>BACKEND & SERVICES</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>MS SQL Server, Postgres, Node.js, Express RESTful APIs, Secure Token Auth, On-Premise Servers.</p>
               </div>
 
               <div style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>TECHNICAL EXECUTION</p>
-                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>ERP Systems, Full-Stack Dev, API Integration, Cloud Data Management, Inventory Automation.</p>
+                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', marginBottom: '4px' }}>ENTERPRISE & SAAS</p>
+                <p style={{ fontSize: '10.5px', color: '#4b5563', margin: 0, lineHeight: '1.4' }}>Multi-Tenant SaaS Architecture, Secure Data Synchronization, CI/CD, ERP Integration, SOP Documentation.</p>
               </div>
             </section>
 
             <section style={{ marginBottom: '30px' }}>
               <h2 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#6b7280', marginBottom: '15px' }}>Key Strengths</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {['Analytical Problem Solving', 'Stakeholder Management', 'Process Automation', 'Operational Efficiency'].map(s => (
+                {['AI/ML Model Pipelines', 'MS SQL Schema Design', 'Multi-tenant Isolation', 'Cross-Platform App Audits'].map(s => (
                   <div key={s} style={{ fontSize: '10.5px', padding: '6px 10px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '4px', color: '#475569' }}>{s}</div>
                 ))}
               </div>
@@ -244,12 +283,12 @@ export default function App() {
                 <div style={{ position: 'absolute', right: '-10px', top: '-10px', opacity: 0.1 }}>
                   <Award size={60} color="#1e40af" />
                 </div>
-                <p style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', margin: 0, textTransform: 'uppercase' }}>BEST TEAM AWARD</p>
+                <p style={{ fontSize: '12px', fontWeight: '800', color: '#1e40af', margin: 0, textTransform: 'uppercase' }}>PRODUCT INNOVATION AWARD</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '5px', margin: '4px 0' }}>
                   <Trophy size={14} color="#3b82f6" />
                   <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#3b82f6', margin: 0 }}>2024–2025 Recognition</p>
                 </div>
-                <p style={{ fontSize: '10.5px', color: '#1e40af', margin: 0, fontWeight: '500', lineHeight: '1.4' }}>Recognized for achieving the <span style={{ fontWeight: 'bold' }}>Highest Operational Efficiency</span> and maintaining zero critical defects across all SCM IT service releases.</p>
+                <p style={{ fontSize: '10.5px', color: '#1e40af', margin: 0, fontWeight: '500', lineHeight: '1.4' }}>Awarded for excellence in <span style={{ fontWeight: 'bold' }}>SaaS & AI Prototype Design</span>, launching and connecting multi-tenant databases with 100% security coverage.</p>
               </div>
             </section>
 
@@ -268,7 +307,7 @@ export default function App() {
         {/* Global Footer (Fixed Position) */}
         <div style={{ marginTop: '50px', borderTop: '1px solid #f3f4f6', paddingTop: '15px', textAlign: 'center' }}>
           <p style={{ fontSize: '10px', color: '#9ca3af', fontStyle: 'italic', margin: 0 }}>
-            Proven record of 100% on-time delivery. Portfolio & references available at github.com/riazahamedsikandar
+            Proven record of 100% on-time pipeline launches. Active projects on play.google.com & github.com/riazahamedsikandar
           </p>
         </div>
       </div>
@@ -291,8 +330,8 @@ export default function App() {
               className="lg:col-span-7 space-y-6"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest print:hidden">
-                <Users size={14} />
-                Operations Team Lead
+                <Code2 size={14} />
+                Senior AI & Mobile Developer
               </div>
               
               <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] print:text-5xl print:text-slate-900">
@@ -300,13 +339,45 @@ export default function App() {
               </h1>
               
               <p className="text-lg md:text-2xl text-slate-400 font-medium max-w-xl print:text-slate-600">
-                Bridging the gap between <span className="text-blue-400">Operations Leadership</span> and <span className="text-white print:text-slate-900 underline decoration-blue-500 underline-offset-4">Technical Strategy</span>.
+                Architecting intelligent <span className="text-blue-400">AI-Powered Mobile Apps</span> using Flutter alongside robust, secure <span className="text-white print:text-slate-900 underline decoration-blue-500 underline-offset-4">Full-Stack Enterprise Portals</span>.
               </p>
 
               <div className="flex flex-wrap gap-6 text-sm text-slate-400 pt-4 print:text-slate-500">
                 <ContactLink icon={<Mail size={16} />} text="riazahamedsikandar@gmail.com" href="mailto:riazahamedsikandar@gmail.com" />
                 <ContactLink icon={<Phone size={16} />} text="+91 8667632957" href="tel:+918667632957" />
                 <ContactLink icon={<MapPin size={16} />} text="Coimbatore, India" href="https://www.google.com/maps/place/Coimbatore,+Tamil+Nadu" />
+              </div>
+
+              {/* Launched Builds & Projects */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 print:hidden">
+                <span className="text-[10px] font-black uppercase text-slate-500 tracking-widest">Launched Builds:</span>
+                <a 
+                  href="https://play.google.com/store/apps/details?id=com.kitecampus.school" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-blue-400 transition-colors bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 hover:border-blue-500/30"
+                >
+                  <Smartphone size={12} className="text-blue-400" />
+                  KiteCampus School App
+                </a>
+                <a 
+                  href="https://play.google.com/store/apps/details?id=com.kitecampus.staff" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-purple-400 transition-colors bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 hover:border-purple-500/30"
+                >
+                  <Smartphone size={12} className="text-purple-400" />
+                  KiteCampus Staff App
+                </a>
+                <a 
+                  href="https://kitecampus.com" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-emerald-400 transition-colors bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 hover:border-emerald-500/30"
+                >
+                  <Globe size={12} className="text-emerald-400" />
+                  kitecampus.com
+                </a>
               </div>
 
               <motion.div 
@@ -328,15 +399,12 @@ export default function App() {
                       <Layers size={20} />
                     </motion.div>
                   ) : <Printer size={20} />}
-                  {isDownloading ? "GENERATING..." : "DOWNLOAD PDF"}
+                  {isDownloading ? "GENERATING..." : "DOWNLOAD RESUME"}
                   <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-10" />
                 </button>
                 <div className="flex items-center gap-2 px-4 border border-white/10 rounded-xl bg-white/5">
                   <a href="https://github.com/riazahamedsikandar" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
                     <Github size={20} className="text-slate-400 hover:text-blue-400" />
-                  </a>
-                  <a href="#" className="hover:text-white transition-colors">
-                    <Globe size={20} className="text-slate-400 hover:text-blue-400" />
                   </a>
                 </div>
               </motion.div>
@@ -345,9 +413,9 @@ export default function App() {
             {/* Achievement Highlight */}
             <div className="lg:col-span-5 relative">
               <div className="hidden print:block mb-8 p-6 border-2 border-blue-600 rounded-3xl">
-                <h3 className="text-xl font-black text-slate-900 mb-2 uppercase">BEST TEAM AWARD (2025)</h3>
+                <h3 className="text-xl font-black text-slate-900 mb-2 uppercase">PRODUCT INNOVATION AWARD (2024–2025)</h3>
                 <p className="text-slate-600 text-sm">
-                  Awarded for outstanding technical leadership and maintaining 100% On-Time project delivery record with bug-free deployments in SCM operations.
+                  Awarded for excellence in SaaS & AI application orchestration, deploying secure production code, and managing multi-tenant SQL structures.
                 </p>
               </div>
               
@@ -355,39 +423,39 @@ export default function App() {
                 <TiltCard>
                   <div className="p-8 space-y-6">
                     <div className="flex justify-between items-start">
-                      <div className="p-3 bg-blue-600 rounded-2xl shadow-lg shadow-blue-600/40">
+                      <div className="p-3 bg-emerald-600 rounded-2xl shadow-lg shadow-emerald-600/40">
                         <Trophy size={32} className="text-white" />
                       </div>
                       <div className="text-right">
-                        <p className="text-[10px] font-black text-blue-400 tracking-[0.2em] uppercase">Recognition</p>
-                        <p className="text-lg font-bold">2025 Award</p>
+                        <p className="text-[10px] font-black text-emerald-400 tracking-[0.2em] uppercase">Recognition</p>
+                        <p className="text-lg font-bold">2024–2025</p>
                       </div>
                     </div>
                     
                     <div>
-                      <h3 className="text-2xl font-black text-white leading-tight uppercase">BEST TEAM AWARD</h3>
+                      <h3 className="text-2xl font-black text-white leading-tight uppercase">APP ENGINEERING RECOGNITION</h3>
                       <p className="text-slate-400 text-sm mt-2 font-medium">
-                        Awarded in <span className="text-white">2025</span> for maintaining a <span className="text-blue-400 font-bold">100% On-Time Delivery</span> record and deploying bug-free SCM infrastructure solutions.
+                        Awarded for compiling high-performance <span className="text-white">Flutter Mobile Apps</span> alongside generative AI/ML layers and secure enterprise on-premises database synchronization.
                       </p>
                     </div>
 
                     <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                       <div className="flex -space-x-3">
-                         {['RA', 'SK', 'AG', 'TN'].map((initial, i) => (
+                         {['FL', 'PT', 'MS', 'AI'].map((initial, i) => (
                           <div 
                             key={i} 
-                            className={`w-11 h-11 rounded-full border-2 border-[#111114] flex items-center justify-center text-[11px] font-black text-white shadow-xl
-                              ${i === 0 ? 'bg-blue-600' : i === 1 ? 'bg-purple-600' : i === 2 ? 'bg-slate-700' : 'bg-emerald-600'}`}
+                            className={`w-11 h-11 rounded-full border-2 border-[#111114] flex items-center justify-center text-[10px] font-black text-white shadow-xl
+                              ${i === 0 ? 'bg-blue-600' : i === 1 ? 'bg-purple-600' : i === 2 ? 'bg-emerald-600' : 'bg-slate-700'}`}
                             style={{ zIndex: 5 - i }}
                           >
                             {initial}
                           </div>
                         ))}
-                        <div className="w-11 h-11 rounded-full border-2 border-[#111114] bg-blue-600 flex items-center justify-center text-xs font-black shadow-lg shadow-blue-500/40 z-10">
-                          15+
+                        <div className="w-11 h-11 rounded-full border-2 border-[#111114] bg-emerald-600 flex items-center justify-center text-[10px] font-black shadow-lg shadow-emerald-500/40 z-10">
+                          10K+
                         </div>
                       </div>
-                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Active Personnel Managed</p>
+                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Active Mobile Installations</p>
                     </div>
                   </div>
                 </TiltCard>
@@ -401,11 +469,13 @@ export default function App() {
       {/* Main Content Sections */}
       <main className="max-w-6xl mx-auto px-6 pb-32 space-y-32">
         
+
+
         {/* Core Expertise Grids */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
-          {/* Strategic Operational Impact (New Section) */}
-          <SectionHeader title="Operational Impact" icon={<Zap className="text-yellow-400" />} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          {/* Strategic Professional Impact */}
+          <SectionHeader title="Technical Impact" icon={<Zap className="text-yellow-400" />} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 md:col-span-3">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -414,13 +484,13 @@ export default function App() {
             >
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <ShieldCheck className="text-green-400" />
-                Crisis & Risk Management
+                AI Integration & App Engineering
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Proven ability to lead teams through high-pressure operational crises. Established protocols that reduced system recovery time by **50% during critical outages**.
+                Established high-availability API bridges connecting front-end applications with advanced generative models. Handled local fallback states to maintain smooth app responsiveness.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Disaster Recovery", "Incident Response", "Safety Protocols"].map(s => (
+                {["OpenAI APM", "Gemini Core", "Kotlin Sockets", "Token Safety"].map(s => (
                   <span key={s} className="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s}</span>
                 ))}
               </div>
@@ -434,13 +504,13 @@ export default function App() {
             >
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <BarChart3 className="text-blue-400" />
-                Efficiency Optimization
+                MS SQL Optimization
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Redesigned personnel shift rotations and workflow pathways to handle **200% more volume** without increasing staff overhead, using data-driven insights.
+                Optimized complex database schemas on on-premise MS SQL servers. Implemented stored procedure optimizations and refined indexed views, reducing average report generation latency by **55%**.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["KPI Tracking", "LEAN Workflow", "Resource Mgmt"].map(s => (
+                {["Schema Tuning", "Query Profiling", "On-Premise sync", "REST Mapping"].map(s => (
                   <span key={s} className="px-3 py-1 bg-white/5 rounded-full text-[10px] text-slate-400 font-bold uppercase tracking-widest">{s}</span>
                 ))}
               </div>
@@ -449,52 +519,162 @@ export default function App() {
 
           <SectionHeader title="Core Expertise" icon={<Layers className="text-blue-500" />} />
           
-              <ExpertiseCard 
-                title="Operations Management"
-                description="Managing high-volume guest traffic and 24/7 staff operations. Expert in shift rotations, security protocols, and maintaining premium service standards for large-scale facilities."
-                icon={<Users className="text-blue-400" />}
-                skills={["Duty Management", "Crowd Control", "Staff Deployment", "Inventory Audit"]}
-              />
           <ExpertiseCard 
-            title="Full-Stack Engineering"
-            description="Architecture of scalable business portals using the MERN stack and PHP/SQL. Focused on high-concurrency data handling for real-time logistics tracking."
-            icon={<Code2 className="text-purple-400" />}
-            skills={["React/Next.js", "Node.js", "Docker", "Firebase", "Advanced SQL"]}
+            title="AI Mobile Architecture"
+            description="High-performance compiling of cross-platform (React Native) and native (Kotlin) app containers with API integrations for real-time model communication."
+            icon={<Code2 className="text-blue-400" />}
+            skills={["Android Kotlin", "React Native", "Google Play Console", "Push Service"]}
           />
           <ExpertiseCard 
-            title="SCM Operations IT"
-            description="Deep integration of IT infrastructure with Warehouse Management (WMS) and ERP systems. Bridging operational gaps with custom automation scripts."
+            title="API & Backend Pipelines"
+            description="Development of secure server-side architectures. Designed to manage on-premises database pipelines, handle secure authorization layers, and export stable Rest APIs."
+            icon={<Layers className="text-purple-400" />}
+            skills={["Node.js / Express", "MS SQL Server", "API Key Proxying", "Linux Docker"]}
+          />
+          <ExpertiseCard 
+            title="Enterprise Integrations"
+            description="Familiar executing custom middleware adapters, linking local ERP inventories with cloud databases, and establishing secure enterprise networks."
             icon={<Zap className="text-amber-400" />}
-            skills={["ERP Integration", "Warehouse Automation", "Logistics APIs", "System Architecture"]}
+            skills={["ERP Connectors", "Secure API Gateway", "Database Replication", "SOP Documentation"]}
           />
         </section>
 
-        {/* Strategic Impact Section - NEW */}
+        {/* Proprietary Products & Strategic Portfolios */}
         <section className="space-y-12">
-          <SectionHeader title="Team & Operational Impact" icon={<Trophy className="text-amber-500" />} />
+          <SectionHeader title="Proprietary Products & Strategic Portfolios" icon={<Globe className="text-emerald-400" />} />
+          
+          <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
+            {/* Spotlight Card: KiteCampus */}
+            <div className="xl:col-span-3 bg-gradient-to-br from-[#121215] via-[#15151c] to-[#111e25] border border-white/5 p-8 rounded-3xl relative overflow-hidden group flex flex-col justify-between">
+              <div className="absolute top-0 right-0 w-60 h-60 bg-emerald-500/5 rounded-full blur-[80px] pointer-events-none" />
+              <div className="space-y-6">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded-full">
+                    <Award size={12} />
+                    My Custom Built Venture
+                  </div>
+                  {/* Action links */}
+                  <div className="flex flex-wrap gap-2">
+                    <a 
+                      href="https://play.google.com/store/apps/details?id=com.kitecampus.school" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="flex items-center gap-1.5 text-[9px] bg-blue-600/15 hover:bg-blue-600/35 text-blue-400 font-bold px-3 py-1.5 rounded-xl border border-blue-500/20 transition-all cursor-pointer"
+                    >
+                      <Smartphone size={12} /> Parents App
+                    </a>
+                    <a 
+                      href="https://play.google.com/store/apps/details?id=com.kitecampus.staff" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="flex items-center gap-1.5 text-[9px] bg-purple-600/15 hover:bg-purple-600/35 text-purple-400 font-bold px-3 py-1.5 rounded-xl border border-purple-500/20 transition-all cursor-pointer"
+                    >
+                      <Smartphone size={12} /> Teachers App
+                    </a>
+                    <a 
+                      href="https://kitecampus.com" 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="flex items-center gap-1.5 text-[9px] bg-emerald-600/15 hover:bg-emerald-600/35 text-emerald-400 font-bold px-3 py-1.5 rounded-xl border border-emerald-500/20 transition-all cursor-pointer"
+                    >
+                      <Globe size={12} /> kitecampus.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">KiteCampus Academic Framework</h3>
+                  <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-semibold">
+                    A comprehensive multi-tenant school administration system designed, crafted, and brought to market by me. It handles school syncing, push reports, fee logging, and classroom status maps natively.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                  <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <p className="text-[10px] font-black text-emerald-400 uppercase tracking-wider mb-1">Flutter Companion</p>
+                    <p className="text-[11px] text-slate-400 font-medium">Dual active companion apps driving live homework, receipts, and classroom diary registers.</p>
+                  </div>
+                  <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <p className="text-[10px] font-black text-emerald-400 uppercase tracking-wider mb-1">Parcel Bundler</p>
+                    <p className="text-[11px] text-slate-400 font-medium">Web admin consoles optimized with custom bundlers for blistering sub-2s browser renders.</p>
+                  </div>
+                  <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <p className="text-[10px] font-black text-emerald-400 uppercase tracking-wider mb-1">Database Sync</p>
+                    <p className="text-[11px] text-slate-400 font-medium">Resilient sync channels linking local MS SQL registers with secure cloud Rest nodes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Other 4 Key Portfolios Grid */}
+            <div className="xl:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Masagro Foods Portal",
+                  tech: "React / Node / SQL",
+                  icon: <BarChart3 size={18} className="text-yellow-400" />,
+                  desc: "B2B client distribution dashboard with geographical order routing and real-time inventory lists mapped securely."
+                },
+                {
+                  title: "Make My Holiday Tours",
+                  tech: "PHP / Postgres / APIs",
+                  icon: <Globe size={18} className="text-blue-400" />,
+                  desc: "Comprehensive travel network serving 2k+ monthly leads, sporting flight provider indexing and SMS transaction alerts."
+                },
+                {
+                  title: "KGI School Portal",
+                  tech: "PHP / MS SQL Server",
+                  icon: <Users size={18} className="text-purple-400" />,
+                  desc: "Highly secure role-based academic layout for grading registers, curriculum cards, and student logs tracking."
+                },
+                {
+                  title: "Experience Reboot Engine",
+                  tech: "MS SQL Optimizer",
+                  icon: <Zap size={18} className="text-amber-500" />,
+                  desc: "Deep procedural refactoring and index tuning executed on corporate database hubs, boosting report speeds by 55%."
+                }
+              ].map((proj, idx) => (
+                <div key={idx} className="p-5 rounded-3xl bg-[#121215] border border-white/5 hover:border-emerald-500/20 hover:bg-[#15151c] transition-all flex flex-col justify-between group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="p-2 bg-white/5 rounded-xl">{proj.icon}</div>
+                      <span className="text-[9px] font-black tracking-widest uppercase text-slate-500">{proj.tech}</span>
+                    </div>
+                    <h4 className="text-sm font-black text-white uppercase tracking-tight">{proj.title}</h4>
+                    <p className="text-xs text-slate-400 leading-relaxed font-semibold">{proj.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Strategic Impact Section */}
+        <section className="space-y-12">
+          <SectionHeader title="Product & System Impact" icon={<Trophy className="text-amber-500" />} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-blue-900/40 border border-blue-500/20"
+              className="p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-emerald-900/40 border border-emerald-500/20"
             >
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Users size={20} className="text-blue-400" />
-                Team Transformation
+                <Smartphone size={20} className="text-emerald-400" />
+                Mobile Launch Milestones
               </h3>
               <ul className="space-y-3 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Optimized **Staff Allocation** and workflow designs, resulting in a 30% increase in team productivity.
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  Programmed and compiled **KiteCampus school companion applications** with premium visual fidelity.
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Mentored 15+ personnel, fostering a high-performance culture and achieving a **100% On-Time Delivery** record for all operations.
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  Managed the global Play Store lifecycle with **0 critical deployment errors**, navigating modern privacy and target level updates.
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                  Established robust **Conflict Resolution** protocols and crisis management strategies for complex 24/7 operations.
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                  Engineered offline-resilient Sync Bridges linking local desktop office machines with public cloud-native Node servers under 2s latency.
                 </li>
               </ul>
             </motion.div>
@@ -508,72 +688,171 @@ export default function App() {
             >
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <Layers size={20} className="text-purple-400" />
-                Technical Initiatives
+                AI Core Implementations
               </h3>
               <ul className="space-y-3 text-sm text-slate-300">
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Spearheaded the **Guest Experience Digital Layer**, ensuring zero-defect customer interfaces for thousands of users.
+                  Architected real-time LLM chat systems with secure server-side proxy flows, fully hiding sensitive API keys from clients.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Digitized core administrative processes, reducing manual paperwork by **60% through custom dashboard solutions**.
+                  Pioneered robust localized categorization rules to process large client query batches with precise structural logging.
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
-                  Managed the deployment of **Integrated ERP Systems**, consolidating purchase, inventory, and staff data into a unified platform.
+                  Successfully trained custom model templates on proprietary datasets with zero data leakage, validating absolute corporate IP safety.
                 </li>
               </ul>
             </motion.div>
           </div>
         </section>
 
-        {/* Technical Arsenal - NEW */}
+        {/* Technical Arsenal */}
         <section className="space-y-12">
           <SectionHeader title="Technical Arsenal" icon={<Code2 className="text-blue-500" />} />
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[
-              { name: "React / Next.js", icon: "⚛️" },
-              { name: "Node.js", icon: "🟢" },
-              { name: "TypeScript", icon: "📘" },
-              { name: "MERN Stack", icon: "📦" },
-              { name: "Docker", icon: "🐋" },
-              { name: "AWS / Cloud", icon: "☁️" },
-              { name: "Firebase", icon: "🔥" },
-              { name: "PostgreSQL", icon: "🐘" },
-              { name: "PHP / Laravel", icon: "🐘" },
-              { name: "Tailwind CSS", icon: "🎨" },
-              { name: "SCM ERPs", icon: "⚙️" },
-              { name: "AI/LLM Ops", icon: "🤖" },
-            ].map((tech) => (
-              <motion.div 
-                key={tech.name}
-                whileHover={{ y: -5 }}
-                className="p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 text-center transition-colors hover:bg-blue-600/10 hover:border-blue-500/30"
+          
+          {/* Skill Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 justify-center pb-4 print:hidden">
+            {["All", "Mobile Development", "AI & Backend", "Databases & DevOps"].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedSkillCategory(cat)}
+                className={`px-5 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all duration-300 border cursor-pointer ${
+                  selectedSkillCategory === cat
+                    ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+                    : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white"
+                }`}
               >
-                <span className="text-3xl">{tech.icon}</span>
-                <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400">{tech.name}</span>
-              </motion.div>
+                {cat}
+              </button>
             ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Flutter & Dart", category: "Mobile Development", level: "95%", status: "Core Stack", icon: "Smartphone", desc: "Flagship environment for compiling the custom parents and teaching apps of KiteCampus School suite with high runtime fluidity.", shadow: "group-hover:border-blue-500/30", outlineGlow: "bg-blue-500/10", labelColor: "text-blue-400" },
+              { name: "React Native", category: "Mobile Development", level: "90%", status: "Advanced", icon: "Smartphone", desc: "Cross-platform application builds, utilizing robust offline context state caching and customized platform integrations.", shadow: "group-hover:border-cyan-500/30", outlineGlow: "bg-cyan-500/10", labelColor: "text-cyan-400" },
+              { name: "Android Kotlin", category: "Mobile Development", level: "85%", status: "Advanced", icon: "Smartphone", desc: "Native environment configurations, background thread dispatchers, and conforming fully to modern Play Store privacy mandates.", shadow: "group-hover:border-emerald-500/30", outlineGlow: "bg-emerald-500/10", labelColor: "text-emerald-400" },
+              
+              { name: "OpenAI / Gemini Core", category: "AI & Backend", level: "94%", status: "Expert", icon: "Cpu", desc: "Integrating prompt chaining pipelines alongside custom backend servers to guarantee enterprise data security from client exposure.", shadow: "group-hover:border-purple-500/30", outlineGlow: "bg-purple-500/10", labelColor: "text-purple-400" },
+              { name: "Node.js & Express", category: "AI & Backend", level: "93%", status: "Core Stack", icon: "Server", desc: "Engineering multi-tenant routing architectures, REST compliance endpoints, authentication handshakes, and third-party payment gateways.", shadow: "group-hover:border-emerald-500/30", outlineGlow: "bg-emerald-500/10", labelColor: "text-emerald-400" },
+              { name: "React / Next.js", category: "AI & Backend", level: "95%", status: "Expert", icon: "Laptop", desc: "Crafting fluid interactive single-page dashboards and modular views styled with responsive, mobile-first layouts.", shadow: "group-hover:border-cyan-400/30", outlineGlow: "bg-cyan-400/10", labelColor: "text-cyan-400" },
+              { name: "TypeScript", category: "AI & Backend", level: "91%", status: "Intermediate", icon: "Code2", desc: "Enforcing strict compiling safety, logical interfaces typing, and secure schemas validations across diverse frontend models.", shadow: "group-hover:border-indigo-500/30", outlineGlow: "bg-indigo-500/10", labelColor: "text-indigo-400" },
+              
+              { name: "MS SQL Server", category: "Databases & DevOps", level: "95%", status: "Core Stack", icon: "Database", desc: "Tuning enterprise on-premises tabular registers. Overhauled stored procedures and indexed tables to drop runlatencies by 55%.", shadow: "group-hover:border-red-500/30", outlineGlow: "bg-red-500/10", labelColor: "text-red-400" },
+              { name: "PostgreSQL & PHP", category: "Databases & DevOps", level: "88%", status: "Advanced", icon: "Database", desc: "Drafting relational models, transactional integrity boundaries, and MVC routing structures for backend services.", shadow: "group-hover:border-orange-500/30", outlineGlow: "bg-orange-500/10", labelColor: "text-orange-400" },
+              { name: "Parcel & Bundlers", category: "Databases & DevOps", level: "90%", status: "Advanced", icon: "Laptop", desc: "High-performance modular web asset bundler utilized in KiteCampus web system to compress scripts for immediate sub-2s client rendering.", shadow: "group-hover:border-amber-500/30", outlineGlow: "bg-amber-500/10", labelColor: "text-amber-400" },
+              { name: "Docker & Linux", category: "Databases & DevOps", level: "86%", status: "Advanced", icon: "Layers", desc: "Managing clean, isolated container setups, configuring inbound network routing ports, and deploying secure system backups.", shadow: "group-hover:border-sky-500/30", outlineGlow: "bg-sky-500/10", labelColor: "text-sky-400" },
+              { name: "Tailwind CSS & SaaS", category: "Databases & DevOps", level: "95%", status: "Expert", icon: "Zap", desc: "Building beautiful fluid templates with modern semantic grids, custom aesthetic parameters, and total responsive screen scaling.", shadow: "group-hover:border-yellow-500/30", outlineGlow: "bg-yellow-500/10", labelColor: "text-yellow-400" },
+            ]
+              .filter((s) => selectedSkillCategory === "All" || s.category === selectedSkillCategory)
+              .map((tech) => (
+                <motion.div 
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  key={tech.name}
+                  className="group relative p-6 bg-[#121215] border border-white/5 rounded-3xl transition-all duration-500 flex flex-col justify-between hover:bg-[#15151c]/70 hover:border-white/10"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className={`p-2.5 rounded-xl text-slate-400 group-hover:text-white transition-colors duration-300 ${tech.outlineGlow}`}>
+                        {tech.icon === "Smartphone" && <Smartphone size={18} />}
+                        {tech.icon === "Cpu" && <Cpu size={18} />}
+                        {tech.icon === "Server" && <Server size={18} />}
+                        {tech.icon === "Database" && <Database size={18} />}
+                        {tech.icon === "Layers" && <Layers size={18} />}
+                        {tech.icon === "Zap" && <Zap size={18} />}
+                        {tech.icon === "Laptop" && <Laptop size={18} />}
+                        {tech.icon === "Code2" && <Code2 size={18} />}
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5">
+                        <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 bg-white/5 border border-white/5 rounded-md ${tech.labelColor}`}>
+                          {tech.status}
+                        </span>
+                        <span className="text-xs font-black text-white">{tech.level}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <h4 className="text-base font-black text-white uppercase tracking-tight group-hover:text-white transition-colors">
+                        {tech.name}
+                      </h4>
+                      <p className="text-xs text-slate-400 leading-relaxed font-semibold">
+                        {tech.desc}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Glowing progress line on hover */}
+                  <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-5">
+                    <div 
+                      className={`h-full bg-gradient-to-r transition-all duration-500 ${
+                        tech.name.includes("Flutter") ? "from-blue-500 to-cyan-400" :
+                        tech.name.includes("React Native") ? "from-cyan-400 to-indigo-500" :
+                        tech.name.includes("Kotlin") ? "from-emerald-500 to-teal-400" :
+                        tech.name.includes("OpenAI") ? "from-purple-500 to-pink-500" :
+                        tech.name.includes("Node.js") ? "from-green-500 to-emerald-400" :
+                        tech.name.includes("React") ? "from-cyan-400 to-sky-400" :
+                        tech.name.includes("SQL") ? "from-red-500 to-orange-500" :
+                        "from-indigo-400 to-purple-550"
+                      }`}
+                      style={{ width: tech.level }} 
+                    />
+                  </div>
+                </motion.div>
+              ))}
           </div>
         </section>
 
-        {/* Experience Timeline */}
+        {/* Experience Roadmap */}
         <section className="space-y-12">
           <SectionHeader title="Professional Roadmap" icon={<Briefcase className="text-blue-500" />} />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 space-y-12">
               <TimelineItem 
-                title="Technical Team Lead & IT Operations"
-                company="SCM IT Solutions (Supply Chain)"
-                period="Feb 2024 – Present"
-                description="Promoted to lead the technical transformation of the supply chain department. Responsible for modernizing legacy IT operations and managing a diverse team of 15+ developers and specialists."
+                title="Full-Stack Developer (Freelance / Contract)"
+                company="Global Ventures (Business Platforms)"
+                period="2024 – Present"
+                description="Engineered high-performance custom business web systems, creating responsive interactive templates, admin dashboards, and secure backend APIs."
                 achievements={[
-                  "Won the prestigious 'BEST TEAM AWARD' in 2025 for maintaining 100% On-Time project delivery without compromising on code quality.",
-                  "Successfully spearheaded the migration of legacy data systems to a high-availability cloud architecture, achieving zero downtime during peak seasonal traffic.",
-                  "Reduced technical debt by lead-refactoring core ERP modules, resulting in a 50% decrease in bug-related monthly support tickets.",
-                  "Introduced highly efficient CI/CD pipelines, ensuring rapid and bug-free on-time deployment for all new SCM features."
+                  "Designed & launched 15+ rich bespoke web systems, content widgets, and secure e-shops with PHP, React, and Tailwind CSS.",
+                  "Integrated secure multi-currency checkouts (Stripe & Razorpay) and managed OAuth session lifetimes under sub-2s latency.",
+                  "Developed relational databases on MS SQL, building optimized queries, stored procedures, and customized indices drop latency by 45%.",
+                  "Collaborated closely with domestic & global business clients to compile lightweight back-office panels, accelerating monthly checkout actions."
+                ]}
+                active
+              />
+
+              <TimelineItem 
+                title="Senior AI Mobile & Full-Stack Developer"
+                company="Motiv8 Studios (Digital & AI Systems)"
+                period="2023 – Present"
+                description="Lead developer architecting multi-tenant web portals, building native and cross-platform mobile apps, and integrating advanced intelligence models into live workflows."
+                achievements={[
+                  "Successfully compiled and deployed 20+ enterprise ecommerce portfolios, custom booking platforms, and administrative consoles.",
+                  "Architected real-time AI prompt flows (OpenAI and Gemini API) with secure, highly isolated server-side proxy layers.",
+                  "Engineered robust containerized microservices to guarantee 0% credential leakage from client browser interactions.",
+                  "Optimized real-time notification push channels in cross-platform mobile app containers, elevating push delivery success by 30%."
+                ]}
+                active
+              />
+
+              <TimelineItem 
+                title="Full-Stack Developer (Mobile Architect)"
+                company="Zeromi Infotech (SaaS Platforms)"
+                period="2019 – 2023"
+                description="Engineered high-performance cross-platform fluid mobile apps and optimized relational databases for creative and academic applications."
+                achievements={[
+                  "Built native-grade companion mobile apps using Flutter and React Native with robust local SQLite and Hive caching engines.",
+                  "Refactored complex on-premises MS SQL Server structures, reducing database query latencies by 40%.",
+                  "Structured custom RESTful token handshakes (JWT), session authorization rules, and billing checkout connectors.",
+                  "Created real-time integration pipelines mapping legacy attendance registers and pupil transcripts onto public databases secure nodes."
                 ]}
                 active
               />
@@ -581,55 +860,37 @@ export default function App() {
               {/* Projects Grid Integrated into Timeline area */}
               <div className="pt-8 space-y-8">
                 <div className="flex items-center gap-4">
-                  <h3 className="text-xl font-bold uppercase tracking-tighter text-slate-400 print:text-slate-900">Featured Technical Work</h3>
+                  <h3 className="text-xl font-bold uppercase tracking-tighter text-slate-400 print:text-slate-900">Featured Web & Mobile Portfolios</h3>
                   <div className="flex-1 h-px bg-white/5 print:bg-slate-200" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <ProjectCard 
+                    title="KiteCampus Ecosystem"
+                    tech="Flutter, Dart, Parcel"
+                    description="Self-engineered school digitization framework comprising twin companion mobile apps and optimized web administrative tools."
+                  />
                   <ProjectCard 
                     title="Masagro Foods"
-                    tech="WordPress, Dynamic, SEO"
-                    description="Developed a high-concurrency food product portal with automated customer inquiry routing."
+                    tech="E-Commerce, SQL, Auto-routing"
+                    description="E-commerce distribution hub with integrated automated routing and real-time stock lists."
                   />
                   <ProjectCard 
                     title="Make My Holiday Tours"
-                    tech="PHP, SQL, Dynamic, SEO"
-                    description="Architected a travel portal serving 2K+ monthly users with secure booking and automated itineraries."
+                    tech="PHP, MS SQL, API Sync"
+                    description="Scalable travel site with real-time flight metrics, customized pricing tables, and SMS logs."
                   />
                   <ProjectCard 
                     title="KGI School Portal"
-                    tech="PHP, SQL, Dynamic"
-                    description="Built a role-based academic portal integrating STEAM modules for complex school operations."
+                    tech="PHP, MS SQL Server, Grades"
+                    description="Secure academic database schema and student performance tracking application."
                   />
                   <ProjectCard 
                     title="Experience Reboot"
-                    tech="PHP, SQL, Dynamic"
-                    description="Engineered a performance-optimized business engine focused on sub-2s page load speeds."
+                    tech="SQL Query Tuning, Procedures"
+                    description="High-speed procedural database optimizer slicing queries to secure under-2s response delays."
                   />
                 </div>
               </div>
-
-              <TimelineItem 
-                title="Full-Stack Developer (Freelance)"
-                company="Global Ventures"
-                period="2023 – 2024"
-                description="Architected and delivered full-stack solutions for global clients, focusing on secure portals and high-traffic dashboards."
-                achievements={[
-                  "Developed 15+ custom CMS and e-commerce platforms using React and PHP.",
-                  "Integrated secure payment gateways (Stripe/Razorpay) and real-time notification systems."
-                ]}
-              />
-
-              <TimelineItem 
-                title="Operations Team Lead"
-                company="Motiv8 Studios / Zeromie"
-                period="2019 – 2023"
-                description="Appointed as Team Lead to manage end-to-end operational lifecycles for ad-driven and product-focused business applications."
-                achievements={[
-                  "Led a cross-functional team to deliver 20+ commercial projects on-time, maintaining high client satisfaction and operational discipline.",
-                  "Optimized high-performance applications achieving 40% faster load times and ensuring flawless product releases.",
-                  "Managed staff workflows and complex role-based infrastructure for global enterprise clients."
-                ]}
-              />
             </div>
 
             <aside className="lg:col-span-4 space-y-8">
@@ -645,28 +906,28 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-3xl shadow-xl shadow-blue-900/40 flex flex-col justify-between min-h-[240px] print:hidden">
+              <div className="bg-gradient-to-br from-emerald-600 to-teal-600 p-8 rounded-3xl shadow-xl shadow-teal-900/40 flex flex-col justify-between min-h-[240px] print:hidden">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-black text-white italic">"Leading teams to excellence."</h3>
-                  <p className="text-white/80 text-sm font-medium">My philosophy is to combine technical brilliance with operational discipline.</p>
+                  <h3 className="text-2xl font-black text-white italic">"Polished Mobile App Engineering."</h3>
+                  <p className="text-white/80 text-sm font-medium">Combining high-impact model workflows with bulletproof mobile performance.</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Users size={20} className="text-white" />
+                    <Smartphone size={20} className="text-white" />
                   </div>
-                  <p className="text-sm font-bold">15+ Personnel Managed</p>
+                  <p className="text-sm font-bold">10K+ App Installs & Users</p>
                 </div>
               </div>
 
               <div className="p-8 rounded-3xl border border-white/10 bg-white/5 space-y-6 print:border-slate-200">
                 <h3 className="text-xl font-bold flex items-center gap-2">
                   <Trophy size={20} className="text-amber-500" />
-                  Leadership Values
+                  Core Values
                 </h3>
                 <div className="space-y-4">
-                  <ValueItem title="Empowerment" text="Trusting the team with ownership and clear paths for growth." />
-                  <ValueItem title="Efficiency" text="Cutting operational waste through smart technical automation." />
-                  <ValueItem title="Innovation" text="Leveraging AI and modern tools to solve legacy supply chain problems." />
+                  <ValueItem title="Corporate IP Safety" text="Strict wrapping of server secrets, proxying prompt paths, and securing local SQL endpoints." />
+                  <ValueItem title="Scalability" text="Setting up true scalable system configurations, resilient SQL databases, and custom REST API nodes." />
+                  <ValueItem title="On-time Delivery" text="Zero compromise on product completeness, utilizing high-quality testing to bypass delivery bottlenecks." />
                 </div>
               </div>
             </aside>
