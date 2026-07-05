@@ -29,7 +29,8 @@ import {
   Database,
   Server,
   Smartphone,
-  Laptop
+  Laptop,
+  ExternalLink
 } from "lucide-react";
 
 export default function App() {
@@ -204,18 +205,34 @@ export default function App() {
             <section style={{ marginBottom: '10px' }}>
               <h2 style={{ fontSize: '13px', fontWeight: '800', color: '#1e40af', textTransform: 'uppercase', letterSpacing: '0.1em', borderBottom: '1px solid #e5e7eb', paddingBottom: '4px', marginBottom: '10px' }}>Proprietary Products & Showcase Portfolios</h2>
               
-              <div style={{ marginBottom: '8px' }}>
-                <p style={{ fontSize: '11px', fontWeight: '800', color: '#111827', margin: '0 0 2px 0' }}>KITECAMPUS SCHOOL SYSTEM (My Proprietary Project)</p>
-                <p style={{ fontSize: '9.5px', color: '#374151', margin: '0 0 3px 0', lineHeight: '1.25' }}>
-                  Complete multi-tenant ecosystem. Twin live companion applications published on Google Play matching custom desktop administrative consoles.
-                </p>
-                <p style={{ fontSize: '8.5px', color: '#1e40af', margin: '0 0 4px 0', fontWeight: 'bold' }}>
-                  Web: kitecampus.com | Parents App: play.google.com/store/apps/details?id=com.kitecampus.school | Staff App: play.google.com/store/apps/details?id=com.kitecampus.staff
-                </p>
-                <ul style={{ fontSize: '9px', color: '#4b5563', paddingLeft: '14px', margin: '0', listStyleType: 'square' }}>
-                  <li style={{ marginBottom: '1px' }}><strong>Mobile Apps (Flutter):</strong> Drives class schedules, diary notifications, and push fee receipts for 10K+ installs.</li>
-                  <li style={{ marginBottom: '1px' }}><strong>Admin Dashboard (Parcel):</strong> Ultra-lightweight bundler securing immediate sub-2s client load times.</li>
-                </ul>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '10px' }}>
+                <div>
+                  <p style={{ fontSize: '10.5px', fontWeight: '800', color: '#111827', margin: '0 0 2px 0' }}>KITECAMPUS SCHOOL SYSTEM (Proprietary)</p>
+                  <p style={{ fontSize: '9px', color: '#374151', margin: '0 0 3px 0', lineHeight: '1.25' }}>
+                    Multi-tenant school system. Twin live applications on Google Play with custom administration dashboards.
+                  </p>
+                  <p style={{ fontSize: '8px', color: '#1e40af', margin: '0 0 3px 0', fontWeight: 'bold' }}>
+                    kitecampus.com | 10K+ Installs
+                  </p>
+                  <ul style={{ fontSize: '8.5px', color: '#4b5563', paddingLeft: '12px', margin: '0', listStyleType: 'square' }}>
+                    <li style={{ marginBottom: '1px' }}><strong>Flutter Apps:</strong> Direct parents & staff push channels.</li>
+                    <li><strong>Admin Deck (Parcel):</strong> Immediate sub-2s client loads.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p style={{ fontSize: '10.5px', fontWeight: '800', color: '#111827', margin: '0 0 2px 0' }}>ICARDZ.IN DIGITAL CARD SaaS (Proprietary)</p>
+                  <p style={{ fontSize: '9px', color: '#374151', margin: '0 0 3px 0', lineHeight: '1.25' }}>
+                    Self-serve digital card builder enabling users to instantly configure and host customized virtual business cards.
+                  </p>
+                  <p style={{ fontSize: '8px', color: '#1e40af', margin: '0 0 3px 0', fontWeight: 'bold' }}>
+                    icardz.in | Active SaaS Portal
+                  </p>
+                  <ul style={{ fontSize: '8.5px', color: '#4b5563', paddingLeft: '12px', margin: '0', listStyleType: 'square' }}>
+                    <li style={{ marginBottom: '1px' }}><strong>Interactive Builder:</strong> Real-time templates & .VCF contacts export.</li>
+                    <li><strong>Robust Core:</strong> Secure QR code rendering and role dashboards.</li>
+                  </ul>
+                </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 10px' }}>
@@ -868,6 +885,13 @@ export default function App() {
                     title="KiteCampus Ecosystem"
                     tech="Flutter, Dart, Parcel"
                     description="Self-engineered school digitization framework comprising twin companion mobile apps and optimized web administrative tools."
+                    link="https://kitecampus.com"
+                  />
+                  <ProjectCard 
+                    title="iCardz SaaS Builder"
+                    tech="React, Tailwind, SaaS core"
+                    description="Interactive self-serve digital business card builder allowing individuals & enterprises to instants configure and host customized cards."
+                    link="https://icardz.in"
                   />
                   <ProjectCard 
                     title="Masagro Foods"
@@ -1047,7 +1071,7 @@ function TimelineItem({ title, company, period, description, achievements, activ
   );
 }
 
-function ProjectCard({ title, tech, description }: any) {
+function ProjectCard({ title, tech, description, link }: any) {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
@@ -1056,7 +1080,13 @@ function ProjectCard({ title, tech, description }: any) {
       className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all hover:bg-white/[0.08] group relative"
     >
       <div className="flex justify-between items-start mb-1">
-        <h3 className="font-bold text-white text-sm group-hover:text-blue-400 transition-colors uppercase tracking-tight">{title}</h3>
+        <h3 className="font-bold text-white text-sm group-hover:text-blue-400 transition-colors uppercase tracking-tight flex items-center gap-1.5">
+          {link ? (
+            <a href={link} target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
+              {title} <ExternalLink size={12} className="text-slate-500 group-hover:text-blue-400 inline" />
+            </a>
+          ) : title}
+        </h3>
         <a href="https://github.com/riazahamedsikandar" target="_blank" rel="noreferrer" className="opacity-0 group-hover:opacity-100 transition-opacity">
           <Github size={14} className="text-slate-500 hover:text-white" />
         </a>
